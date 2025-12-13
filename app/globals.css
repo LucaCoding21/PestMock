@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom focus styles for accessibility */
+@layer base {
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500 ring-0;
+  }
+
+  body {
+    @apply bg-white text-brand-900 antialiased;
+  }
+}
+
+@layer components {
+  /* Primary CTA Button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4
+           bg-gradient-to-r from-brand-600 to-brand-700 text-white font-bold text-base uppercase tracking-wide
+           rounded-xl shadow-button
+           transition-all duration-200 ease-out
+           hover:shadow-button-hover hover:-translate-y-0.5
+           focus-visible:outline-brand-500
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Secondary CTA Button (Call Now) */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3
+           bg-white text-brand-800 font-bold text-base
+           border-2 border-brand-200 rounded-xl
+           transition-all duration-200 ease-out
+           hover:border-brand-500 hover:text-brand-700
+           focus-visible:outline-brand-500
+           active:scale-[0.98];
+  }
+
+  /* Tertiary link style */
+  .btn-tertiary {
+    @apply inline-flex items-center text-brand-600 font-bold
+           underline underline-offset-4 decoration-brand-300
+           transition-colors duration-200
+           hover:decoration-brand-600
+           focus-visible:outline-brand-500 rounded;
+  }
+
+  /* Card component */
+  .card {
+    @apply bg-white rounded-2xl shadow-card p-6
+           transition-shadow duration-200
+           hover:shadow-card-hover;
+  }
+
+  /* Section container */
+  .section {
+    @apply py-20 md:py-24 lg:py-32;
+  }
+
+  /* Container width */
+  .container-narrow {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Form input */
+  .form-input {
+    @apply w-full px-4 py-4
+           bg-brand-50 border-2 border-transparent rounded-xl
+           text-brand-900 placeholder:text-muted
+           transition-all duration-200
+           focus:border-brand-500 focus:bg-white
+           focus-visible:outline-none;
+  }
+
+  /* Form select */
+  .form-select {
+    @apply form-input appearance-none cursor-pointer
+           bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%2364748B%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.23%207.21a.75.75%200%20011.06.02L10%2011.168l3.71-3.938a.75.75%200%20111.08%201.04l-4.25%204.5a.75.75%200%2001-1.08%200l-4.25-4.5a.75.75%200%2001.02-1.06z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]
+           bg-no-repeat bg-[right_1rem_center] bg-[length:1.25rem];
+  }
+}
+
+/* Prevent CLS from font loading */
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Inter Regular'), local('Inter-Regular');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local('Inter Medium'), local('Inter-Medium');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local('Inter SemiBold'), local('Inter-SemiBold');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Inter Bold'), local('Inter-Bold');
+  }
+}
+
+/* Mobile action bar safe area */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-area-bottom {
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  }
+
+  .main-content-padding {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Exit Intent Popup Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out forwards;
+}

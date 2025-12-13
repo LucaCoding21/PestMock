@@ -1,0 +1,109 @@
+import Link from 'next/link'
+import Image from 'next/image'
+
+const services = [
+  {
+    name: 'Ant Control',
+    image: '/ants.png',
+    description: 'Eliminate colonies at the source',
+    color: 'bg-amber-600/80',
+  },
+  {
+    name: 'Rodent Control',
+    image: '/rodent.png',
+    description: 'Humane removal & exclusion',
+    color: 'bg-slate-700/80',
+  },
+  {
+    name: 'Termite Protection',
+    image: '/termite.png',
+    description: 'Protect your biggest investment',
+    color: 'bg-brand-700/80',
+  },
+  {
+    name: 'Cockroach Treatment',
+    image: '/roach.png',
+    description: 'Complete elimination guaranteed',
+    color: 'bg-red-700/80',
+  },
+  {
+    name: 'Spider Removal',
+    image: '/spider.png',
+    description: 'Safe for pets & children',
+    color: 'bg-purple-700/80',
+  },
+  {
+    name: 'Mosquito Control',
+    image: '/mosquito.png',
+    description: 'Enjoy your yard again',
+    color: 'bg-sky-600/80',
+  },
+]
+
+export default function ServicesPreview() {
+  return (
+    <section className="py-24 lg:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
+          <span className="inline-block px-4 py-2 bg-brand-50 text-brand-700 rounded-full text-sm font-bold uppercase tracking-wide mb-6">
+            Our Services
+          </span>
+          <h2 className="text-display text-brand-900">
+            What&apos;s Bugging You?
+          </h2>
+          <p className="mt-6 text-xl text-muted leading-relaxed">
+            From ants to rodents, we handle all common household pests with guaranteed results and eco-friendly solutions.
+          </p>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {services.map((service) => (
+            <Link
+              key={service.name}
+              href="/services"
+              className="group relative overflow-hidden rounded-2xl aspect-[4/3] shadow-card hover:shadow-card-hover transition-all duration-500"
+            >
+              <Image
+                src={service.image}
+                alt={`${service.name} treatment by NoPests technician`}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className={`absolute inset-0 ${service.color} group-hover:opacity-95 transition-opacity`} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+                <h3 className="text-2xl font-bold text-white mb-2">{service.name}</h3>
+                <p className="text-white/80 text-sm">{service.description}</p>
+                <div className="mt-4 flex items-center gap-2 text-white/90 text-sm font-semibold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                  Learn More
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-3 text-brand-700 font-bold text-lg hover:text-brand-800 transition-colors group"
+          >
+            View All Services
+            <span className="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center group-hover:bg-brand-200 transition-colors">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
