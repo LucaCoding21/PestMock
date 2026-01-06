@@ -51,8 +51,13 @@ export default function ChatBot() {
   ])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -165,7 +170,7 @@ export default function ChatBot() {
               >
                 <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
                 <p className={`text-xs mt-1.5 ${message.role === 'user' ? 'text-white/60' : 'text-muted'}`}>
-                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  {mounted ? message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}
                 </p>
               </div>
             </div>
