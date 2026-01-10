@@ -17,9 +17,9 @@ const MOCK_RESPONSES: Record<string, string> = {
   rodent: "For mice or rats, we use a combination of exclusion (sealing entry points), trapping, and monitoring. Our technicians identify how they're getting in and create a customized plan. All our protection plans include rodent control.",
   spider: "Most spiders are actually beneficial, but we understand the concern! Our perimeter treatments create a barrier that keeps them out. Black widows or brown recluses require specialized treatment - if you've seen either, please call us immediately at (555) 123-4567.",
   bee: "We don't exterminate bees - they're essential pollinators! We work with local beekeepers for safe relocation. If you're seeing wasps or hornets instead, those we can definitely help with. Can you describe what you're seeing?",
-  price: "Our plans start at just $79/month for monthly protection, which covers common household pests. Quarterly plans start at $119/quarter for year-round coverage. Exact pricing depends on your home size and situation - we'll give you a personalized quote during your free inspection. No obligation, no surprises!",
-  schedule: "I can help you schedule a free inspection! Our technicians are available Monday-Saturday, 8am-6pm. Same-day service is often available. Would you prefer morning or afternoon? You can also call us directly at (555) 123-4567 or use the contact form.",
-  emergency: "For pest emergencies, please call us directly at (555) 123-4567 - we offer same-day emergency service! Common emergencies include wasp nests near entrances, rodent sightings, or bed bugs. Our team can usually be there within 2-4 hours.",
+  price: "Our plans start at just $79/month for monthly protection, which covers common household pests. Quarterly plans start at $119/quarter for year round coverage. Exact pricing depends on your home size and situation. We'll give you a personalized quote during your free inspection. No obligation, no surprises!",
+  schedule: "I can help you schedule a free inspection! Our technicians are available Monday to Saturday, 8am to 6pm. Same day service is often available. Would you prefer morning or afternoon? You can also call us directly at (555) 123-4567 or use the contact form.",
+  emergency: "For pest emergencies, please call us directly at (555) 123-4567. We offer same day emergency service! Common emergencies include wasp nests near entrances, rodent sightings, or bed bugs. Our team can usually be there within 2 to 4 hours.",
 }
 
 function getAIResponse(userMessage: string): string {

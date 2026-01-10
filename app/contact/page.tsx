@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import MobileActionBar from '@/components/MobileActionBar'
+import ChatBot from '@/components/ChatBot'
 
 const PHONE_NUMBER = '(555) 123-4567'
 const PHONE_HREF = 'tel:+15551234567'
@@ -344,21 +345,15 @@ export default function ContactPage() {
               {/* Info Side */}
               <div className="space-y-8">
                 {/* Phone CTA */}
-                <div className="bg-brand-600 rounded-3xl p-8 text-white">
-                  <h3 className="text-xl font-bold mb-2">Prefer to Call?</h3>
-                  <p className="text-white/80 mb-6">Speak with a pest control expert now.</p>
-                  <a
-                    href={PHONE_HREF}
-                    className="inline-flex items-center gap-4 text-3xl font-extrabold"
-                  >
-                    <span className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center">
-                      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                    </span>
-                    {PHONE_NUMBER}
-                  </a>
-                </div>
+                <a
+                  href={PHONE_HREF}
+                  className="flex items-center justify-center gap-3 w-full h-16 bg-brand-600 hover:bg-brand-500 text-white font-bold text-lg rounded-2xl shadow-button hover:shadow-button-hover transition-all"
+                >
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Call Us Now {PHONE_NUMBER}
+                </a>
 
                 {/* Hours */}
                 <div className="bg-white rounded-3xl p-8 shadow-card">
@@ -433,6 +428,7 @@ export default function ContactPage() {
       </main>
       <Footer />
       <MobileActionBar />
+      <ChatBot />
     </>
   )
 }

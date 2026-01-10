@@ -4,39 +4,45 @@ import Image from 'next/image'
 const services = [
   {
     name: 'Ant Control',
-    image: '/ants.png',
+    image: '/ants.jpg',
     description: 'Eliminate colonies at the source',
-    color: 'bg-amber-600/80',
+    color: 'bg-black/10',
+    href: '/services/ant-control',
   },
   {
     name: 'Rodent Control',
-    image: '/rodent.png',
+    image: '/rat.jpg',
     description: 'Humane removal & exclusion',
-    color: 'bg-slate-700/80',
+    color: 'bg-black/10',
+    href: '/services/rodent-control',
   },
   {
     name: 'Termite Protection',
-    image: '/termite.png',
+    image: '/termite.webp',
     description: 'Protect your biggest investment',
-    color: 'bg-brand-700/80',
+    color: 'bg-black/10',
+    href: '/services/termite-control',
   },
   {
     name: 'Cockroach Treatment',
-    image: '/roach.png',
+    image: '/cockroach.jpg',
     description: 'Complete elimination guaranteed',
-    color: 'bg-red-700/80',
+    color: 'bg-black/10',
+    href: '/services/cockroach-control',
   },
   {
-    name: 'Spider Removal',
-    image: '/spider.png',
-    description: 'Safe for pets & children',
-    color: 'bg-purple-700/80',
+    name: 'Bed Bug Treatment',
+    image: '/bedbug.jpg',
+    description: 'Sleep soundly again',
+    color: 'bg-black/10',
+    href: '/services/bed-bug-control',
   },
   {
-    name: 'Mosquito Control',
-    image: '/mosquito.png',
-    description: 'Enjoy your yard again',
-    color: 'bg-sky-600/80',
+    name: 'Mosquito, Flea & Ticks',
+    image: '/mosquito.jpg',
+    description: 'Protect your family & pets',
+    color: 'bg-black/10',
+    href: '/services/mosquito-control',
   },
 ]
 
@@ -53,7 +59,7 @@ export default function ServicesPreview() {
             What&apos;s Bugging You?
           </h2>
           <p className="mt-6 text-xl text-muted leading-relaxed">
-            From ants to rodents, we handle all common household pests with guaranteed results and eco-friendly solutions.
+            From ants to rodents, we handle all common household pests with guaranteed results and eco friendly solutions.
           </p>
         </div>
 
@@ -62,7 +68,7 @@ export default function ServicesPreview() {
           {services.map((service) => (
             <Link
               key={service.name}
-              href="/services"
+              href={service.href}
               className="group relative overflow-hidden rounded-2xl aspect-[4/3] shadow-card hover:shadow-card-hover transition-all duration-500"
             >
               <Image
@@ -75,15 +81,14 @@ export default function ServicesPreview() {
               <div className={`absolute inset-0 ${service.color} group-hover:opacity-95 transition-opacity`} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
-              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
-                <h3 className="text-2xl font-bold text-white mb-2">{service.name}</h3>
+              <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
+                <h3 className="text-2xl font-bold text-white mb-1">{service.name}</h3>
                 <p className="text-white/80 text-sm">{service.description}</p>
-                <div className="mt-4 flex items-center gap-2 text-white/90 text-sm font-semibold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
-                  Learn More
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
+              </div>
+              <div className="absolute bottom-4 right-4 lg:bottom-5 lg:right-5 w-10 h-10 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+                <svg className="w-5 h-5 text-white -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
+                </svg>
               </div>
             </Link>
           ))}

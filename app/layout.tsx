@@ -29,6 +29,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <script src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/dist/twemoji.min.js" crossOrigin="anonymous" defer></script>
       </head>
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         {/* Skip to main content link for accessibility */}

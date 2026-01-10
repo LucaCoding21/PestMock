@@ -4,6 +4,8 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import TrustStrip from '@/components/TrustStrip'
 import ServicesPreview from '@/components/ServicesPreview'
+import HomecareSolutions from '@/components/HomecareSolutions'
+import AboutTeam from '@/components/AboutTeam'
 import PlansPreview from '@/components/PlansPreview'
 import ReviewsPreview from '@/components/ReviewsPreview'
 import CTABanner from '@/components/CTABanner'
@@ -20,6 +22,8 @@ export default function Home() {
         <Hero />
         <TrustStrip />
         <ServicesPreview />
+        <HomecareSolutions />
+        <AboutTeam />
         <PlansPreview />
         <ReviewsPreview />
         <CTABanner />

@@ -68,13 +68,6 @@ export default function ExitIntentPopup() {
 
         {/* Header with gradient */}
         <div className="bg-gradient-to-br from-brand-600 to-brand-700 px-8 py-10 text-center text-white">
-          <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-4">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
-            </span>
-            <span className="text-sm font-medium">Limited Time Offer</span>
-          </div>
           <h2 className="text-3xl font-bold">Wait! Before You Go...</h2>
           <p className="mt-3 text-white/90 text-lg">
             Get <span className="font-bold text-yellow-300">$50 OFF</span> your first treatment
@@ -98,7 +91,7 @@ export default function ExitIntentPopup() {
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               </div>
-              <span className="text-brand-800 font-medium">Same-day service available</span>
+              <span className="text-brand-800 font-medium">Same day service available</span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0">

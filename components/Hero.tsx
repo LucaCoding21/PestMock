@@ -1,10 +1,31 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 
 const PHONE_NUMBER = '(555) 123-4567'
 const PHONE_HREF = 'tel:+15551234567'
+
+// Twemoji component to render consistent emojis across platforms
+function Twemoji({ emoji, className = '' }: { emoji: string; className?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    if (ref.current && typeof window !== 'undefined') {
+      // @ts-ignore
+      if (window.twemoji) {
+        // @ts-ignore
+        window.twemoji.parse(ref.current, {
+          folder: 'svg',
+          ext: '.svg',
+          base: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/',
+        })
+      }
+    }
+  }, [emoji])
+
+  return <span ref={ref} className={className}>{emoji}</span>
+}
 
 const pestOptions = [
   { value: 'ants', label: 'Ants', icon: '🐜' },
@@ -16,8 +37,8 @@ const pestOptions = [
 ]
 
 const serviceOptions = [
-  { value: 'emergency', label: 'Emergency', sublabel: 'Same-day help', icon: '🚨' },
-  { value: 'one-time', label: 'One-Time', sublabel: 'Single visit', icon: '✅' },
+  { value: 'emergency', label: 'Emergency', sublabel: 'Same day help', icon: '🚨' },
+  { value: 'one-time', label: 'One Time', sublabel: 'Single visit', icon: '✅' },
   { value: 'ongoing', label: 'Ongoing Plan', sublabel: 'Quarterly', icon: '🛡️', badge: 'Most Popular' },
 ]
 
@@ -104,19 +125,8 @@ export default function Hero() {
 
   const ProgressBar = () => (
     <div className="mb-4">
-      <div className="flex justify-between items-center text-xs mb-1.5">
+      <div className="flex justify-center items-center text-xs mb-1.5">
         <span className="text-brand-600 font-medium">Step {currentStep} of 4</span>
-        {currentStep > 1 && (
-          <button
-            onClick={handleBack}
-            className="flex items-center gap-0.5 text-brand-500 hover:text-brand-700 transition-colors"
-          >
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-            Back
-          </button>
-        )}
       </div>
       <div className="h-1.5 bg-brand-100 rounded-full overflow-hidden">
         <div
@@ -128,17 +138,17 @@ export default function Hero() {
   )
 
   const renderStep1 = () => (
-    <div>
+    <div className="h-full flex flex-col">
       <h3 className="text-sm font-semibold text-brand-800 mb-3 text-center">
         What&apos;s the issue?
       </h3>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 gap-3 flex-1">
         {pestOptions.map(option => (
           <button
             key={option.value}
             onClick={() => handleOptionSelect('pestType', option.value)}
             className={`
-              p-2.5 sm:p-3 rounded-xl border-2 text-center transition-all duration-200
+              rounded-xl border-2 text-center transition-all duration-200 flex flex-col items-center justify-center
               hover:-translate-y-0.5
               ${formData.pestType === option.value
                 ? 'border-brand-500 bg-brand-50 shadow-card'
@@ -146,7 +156,7 @@ export default function Hero() {
               }
             `}
           >
-            <span className="text-xl sm:text-2xl mb-1 block">{option.icon}</span>
+            <Twemoji emoji={option.icon} className="text-2xl sm:text-3xl mb-1 [&>img]:inline [&>img]:w-7 [&>img]:h-7 sm:[&>img]:w-8 sm:[&>img]:h-8" />
             <span className="text-xs font-medium text-brand-800">{option.label}</span>
           </button>
         ))}
@@ -173,7 +183,7 @@ export default function Hero() {
               }
             `}
           >
-            <span className="text-xl">{option.icon}</span>
+            <Twemoji emoji={option.icon} className="text-xl [&>img]:inline [&>img]:w-6 [&>img]:h-6" />
             <div className="flex-1 min-w-0">
               <span className="font-semibold text-brand-800 text-sm block">{option.label}</span>
               <span className="text-xs text-brand-600/70">{option.sublabel}</span>
@@ -208,7 +218,7 @@ export default function Hero() {
               }
             `}
           >
-            <span className="text-2xl sm:text-3xl mb-1 block">{option.icon}</span>
+            <Twemoji emoji={option.icon} className="text-2xl sm:text-3xl mb-1 block [&>img]:inline [&>img]:w-7 [&>img]:h-7 sm:[&>img]:w-8 sm:[&>img]:h-8" />
             <span className="text-xs font-medium text-brand-800">{option.label}</span>
           </button>
         ))}
@@ -322,10 +332,21 @@ export default function Hero() {
   )
 
   const QuoteForm = () => (
-    <div className="bg-white rounded-2xl shadow-elevated w-[340px] sm:w-[380px]">
+    <div className="bg-white rounded-2xl shadow-elevated w-[380px] sm:w-[420px]">
       {/* Form header */}
-      <div className="text-center p-5 pb-0">
-        <h2 className="text-lg font-bold text-brand-900">
+      <div className="relative p-5 pb-0">
+        {currentStep > 1 && (
+          <button
+            onClick={handleBack}
+            className="absolute left-5 top-5 flex items-center gap-1 text-sm text-brand-500 hover:text-brand-700 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
+          </button>
+        )}
+        <h2 className="text-lg font-bold text-brand-900 text-center">
           Get Your Free Quote
         </h2>
       </div>
@@ -355,7 +376,7 @@ export default function Hero() {
               </div>
             </div>
             {/* Fixed size step container - all steps rendered, only current visible */}
-            <div className="h-[260px] overflow-hidden relative">
+            <div className="h-[300px] overflow-hidden relative">
               <div className={`absolute inset-0 transition-all duration-200 ease-out ${currentStep === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 pointer-events-none translate-x-4'}`}>
                 {renderStep1()}
               </div>
@@ -371,7 +392,7 @@ export default function Hero() {
             </div>
           </>
         ) : (
-          <div className="h-[290px] flex items-center justify-center animate-scaleIn">
+          <div className="h-[330px] flex items-center justify-center animate-scaleIn">
             {renderSuccess()}
           </div>
         )}
@@ -384,12 +405,12 @@ export default function Hero() {
       {/* Background Image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero.png"
+          src="/house-hero.jpg"
           alt="Professional pest control service"
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-center lg:object-[center_75%]"
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMiMUFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAYEQEBAQEBAAAAAAAAAAAAAAABAgADEf/aAAwDAQACEQMRAD8AzbS9v7fuq/wWtsIikhbqZiWIA+c+qsHbVgACNOtQB6/mP5SlKLOTXcmuf//Z"
         />
@@ -401,21 +422,37 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16">
 
           {/* Left side - Headlines & Value Props */}
-          <div className="flex-1 max-w-2xl">
+          <div className="flex-1 max-w-2xl text-center lg:text-left">
             {/* Main headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+            <h1 className="mt-16 sm:mt-0 text-5xl sm:text-4xl lg:text-6xl font-bold text-white tracking-tight">
               Pest-Free Home.
               <br />
               <span className="text-brand-400">Guaranteed.</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-lg">
-              Same-day inspections. Treatments that actually work. We&apos;ll call you back within 1 hour.
+            <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-lg mx-auto lg:mx-0">
+              Same day inspections. Treatments that actually work. We&apos;ll call you back within 1 hour.
             </p>
 
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
+              <a
+                href="#quote-form"
+                className="inline-flex items-center justify-center h-12 px-6 bg-brand-500 hover:bg-brand-400 text-white font-bold text-sm rounded-xl shadow-button hover:shadow-button-hover transition-all transform hover:-translate-y-0.5"
+              >
+                Get a Free Inspection
+              </a>
+              <a
+                href="/services"
+                className="inline-flex items-center justify-center h-12 px-6 border-2 border-white/30 text-white hover:bg-white/10 font-semibold text-sm rounded-xl transition-all"
+              >
+                View Our Services
+              </a>
+            </div>
+
             {/* Trust indicators */}
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 justify-center lg:justify-start">
               <div className="flex items-center gap-2 text-white/90">
                 <div className="flex">
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -428,15 +465,28 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Value props */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Phone CTA - desktop only */}
+            <div className="mt-8 hidden sm:block">
+              <a
+                href={PHONE_HREF}
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span className="font-medium">Or call {PHONE_NUMBER}</span>
+              </a>
+            </div>
+
+            {/* Value props - hidden on mobile */}
+            <div className="mt-8 hidden sm:grid sm:grid-cols-3 gap-4">
               <div className="flex items-center gap-3 text-white/80">
                 <div className="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center flex-shrink-0">
                   <svg className="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <span className="text-sm">Same-day service</span>
+                <span className="text-sm">Same day service</span>
               </div>
               <div className="flex items-center gap-3 text-white/80">
                 <div className="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center flex-shrink-0">
@@ -454,19 +504,6 @@ export default function Hero() {
                 </div>
                 <span className="text-sm">Local experts</span>
               </div>
-            </div>
-
-            {/* Phone CTA for mobile - below value props */}
-            <div className="mt-8 lg:hidden">
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <span className="font-medium">Or call {PHONE_NUMBER}</span>
-              </a>
             </div>
           </div>
 

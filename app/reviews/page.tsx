@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import MobileActionBar from '@/components/MobileActionBar'
+import ChatBot from '@/components/ChatBot'
 import Link from 'next/link'
 
 const reviews = [
@@ -113,6 +114,7 @@ export default function ReviewsPage() {
       </main>
       <Footer />
       <MobileActionBar />
+      <ChatBot />
     </>
   )
 }

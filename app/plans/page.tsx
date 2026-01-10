@@ -1,13 +1,13 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import MobileActionBar from '@/components/MobileActionBar'
+import ChatBot from '@/components/ChatBot'
 import Link from 'next/link'
 
 const plans = [
   {
     name: 'Monthly Protection',
-    price: '79',
-    period: '/month',
+    tierName: 'Premium Guard',
     description: 'Maximum protection for high-pest areas or active infestations',
     features: [
       'Monthly inspection & treatment',
@@ -21,8 +21,7 @@ const plans = [
   },
   {
     name: 'Quarterly Protection',
-    price: '119',
-    period: '/quarter',
+    tierName: 'Home Shield',
     description: 'Our most popular plan for year-round peace of mind',
     features: [
       'Quarterly inspection & treatment',
@@ -37,8 +36,7 @@ const plans = [
   },
   {
     name: 'One-Time Service',
-    price: '179',
-    period: 'one-time',
+    tierName: 'Quick Response',
     description: 'Immediate treatment for current pest issues',
     features: [
       'Single comprehensive treatment',
@@ -91,13 +89,19 @@ export default function PlansPage() {
             <p className="mt-6 text-xl text-brand-200 max-w-2xl mx-auto">
               No contracts. No hidden fees. Free inspections included with every plan.
             </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center mt-8 h-14 px-8 bg-white hover:bg-brand-50 text-brand-800 font-bold text-sm uppercase tracking-wide rounded-xl shadow-button hover:shadow-button-hover transition-all transform hover:-translate-y-0.5"
+            >
+              Get Quote
+            </Link>
           </div>
         </section>
 
         {/* Plans Grid */}
         <section className="py-24 lg:py-32 bg-warm-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 gap-8 px-4 sm:px-0">
               {plans.map((plan) => (
                 <div
                   key={plan.name}
@@ -113,7 +117,7 @@ export default function PlansPage() {
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
-                        Most Popular
+                        Best Value
                       </span>
                     </div>
                   )}
@@ -121,11 +125,8 @@ export default function PlansPage() {
                   <div className="p-8 lg:p-10">
                     <div className="text-center mb-8 pt-4">
                       <h2 className="text-xl font-bold text-brand-900">{plan.name}</h2>
-                      <p className="text-xs uppercase tracking-wide text-brand-600 font-semibold mt-4">Starting at</p>
-                      <div className="mt-1 flex items-baseline justify-center gap-1">
-                        <span className="text-sm font-bold text-muted">$</span>
-                        <span className="text-6xl font-extrabold text-brand-900 tracking-tight">{plan.price}</span>
-                        <span className="text-lg font-semibold text-muted">/{plan.period.replace('/', '')}</span>
+                      <div className="mt-4">
+                        <span className="text-3xl font-extrabold text-brand-600 tracking-tight">{plan.tierName}</span>
                       </div>
                       <p className="mt-4 text-muted">{plan.description}</p>
                     </div>
@@ -259,6 +260,7 @@ export default function PlansPage() {
       </main>
       <Footer />
       <MobileActionBar />
+      <ChatBot />
     </>
   )
 }

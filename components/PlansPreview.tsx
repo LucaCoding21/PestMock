@@ -2,40 +2,55 @@ import Link from 'next/link'
 
 const plans = [
   {
-    name: 'Monthly',
-    price: '79',
-    period: '/mo',
-    description: 'Best for active infestations',
-    features: ['Monthly treatments', 'Priority scheduling', 'Free re-service', 'Interior + exterior'],
+    name: 'Monthly Protection',
+    tierName: 'Premium Guard',
+    description: 'Maximum protection for high-pest areas or active infestations',
+    features: [
+      'Monthly inspection & treatment',
+      'Interior & exterior coverage',
+      'All common household pests',
+      'Free re-service guarantee',
+      'Priority scheduling',
+      '24/7 emergency support',
+    ],
     popular: false,
-    cta: 'Start Monthly Plan',
-    savings: null,
+    cta: 'Get Started',
   },
   {
-    name: 'Quarterly',
-    price: '119',
-    period: '/qtr',
-    description: 'Best value for prevention',
-    features: ['Quarterly treatments', 'Interior + exterior', 'Free re-service', 'Pest guarantee', 'Priority response'],
+    name: 'Quarterly Protection',
+    tierName: 'Home Shield',
+    description: 'Our most popular plan for year-round peace of mind',
+    features: [
+      'Quarterly inspection & treatment',
+      'Interior & exterior coverage',
+      'All common household pests',
+      'Free re-service guarantee',
+      'Seasonal pest prevention',
+      'Annual termite inspection',
+      'Priority scheduling',
+    ],
     popular: true,
-    cta: 'Start Quarterly Plan',
-    savings: 'Save $197/year vs monthly',
+    cta: 'Get Started',
   },
   {
-    name: 'One-Time',
-    price: '179',
-    period: '',
-    description: 'Immediate single treatment',
-    features: ['Comprehensive treatment', '30-day guarantee', 'Free follow-up inspection'],
+    name: 'One-Time Service',
+    tierName: 'Quick Response',
+    description: 'Immediate treatment for current pest issues',
+    features: [
+      'Single comprehensive treatment',
+      'Interior & exterior coverage',
+      'Target specific pest issue',
+      '30-day satisfaction guarantee',
+      'Free follow-up if needed',
+    ],
     popular: false,
-    cta: 'Book Treatment',
-    savings: null,
+    cta: 'Get Started',
   },
 ]
 
 export default function PlansPreview() {
   return (
-    <section className="py-24 lg:py-32 bg-warm-50">
+    <section className="py-24 lg:py-32 bg-brand-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
@@ -51,7 +66,7 @@ export default function PlansPreview() {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 sm:px-0">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -72,21 +87,13 @@ export default function PlansPreview() {
                 </div>
               )}
 
-              <div className="p-8 lg:p-10">
+              <div className="px-10 py-8 lg:p-10">
                 <div className="text-center mb-8 pt-2">
                   <h3 className="text-xl font-bold text-brand-900">{plan.name}</h3>
-                  <p className="text-xs uppercase tracking-wide text-brand-600 font-semibold mt-4">Starting at</p>
-                  <div className="mt-1 flex items-baseline justify-center gap-1">
-                    <span className="text-sm font-bold text-muted">$</span>
-                    <span className="text-6xl font-extrabold text-brand-900 tracking-tight">{plan.price}</span>
-                    <span className="text-lg font-semibold text-muted">{plan.period}</span>
+                  <div className="mt-4">
+                    <span className="text-3xl font-extrabold text-brand-600 tracking-tight">{plan.tierName}</span>
                   </div>
                   <p className="mt-3 text-muted">{plan.description}</p>
-                  {plan.savings && (
-                    <p className="mt-2 text-sm font-semibold text-green-600 bg-green-50 rounded-full px-3 py-1 inline-block">
-                      {plan.savings}
-                    </p>
-                  )}
                 </div>
 
                 <ul className="space-y-4 mb-10">
@@ -97,7 +104,7 @@ export default function PlansPreview() {
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       </span>
-                      <span className="text-brand-800 font-medium">{feature}</span>
+                      <span className="text-brand-800">{feature}</span>
                     </li>
                   ))}
                 </ul>
