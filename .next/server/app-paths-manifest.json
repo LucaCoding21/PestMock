@@ -1,7 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/services/ant-control/page": "app/services/ant-control/page.js",
-  "/plans/page": "app/plans/page.js",
-  "/reviews/page": "app/reviews/page.js",
-  "/services/page": "app/services/page.js"
-}

@@ -101,7 +101,7 @@ export default function ReviewsPage() {
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-display-lg text-white">Join Our Happy Customers</h2>
             <p className="mt-6 text-xl text-brand-200">
-              See why hundreds of homeowners trust NoPests for their pest control needs.
+              See why hundreds of homeowners trust PestMaster for their pest control needs.
             </p>
             <Link
               href="/contact"

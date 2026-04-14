@@ -106,7 +106,7 @@ export default function Header() {
               </svg>
             </div>
             <div>
-              <span className="font-extrabold text-2xl text-brand-900 tracking-tight">NoPests</span>
+              <span className="font-extrabold text-2xl text-brand-900 tracking-tight">PestMaster</span>
               <span className="hidden sm:block text-xs text-muted font-medium tracking-wide uppercase">Pest Control</span>
             </div>
           </Link>

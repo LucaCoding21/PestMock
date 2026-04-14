@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'NoPests | Professional Pest Control | Free Inspection',
+  title: 'PestMaster | Professional Pest Control | Free Inspection',
   description: 'Professional pest control with free inspections, same-day service, and plans starting at $79/month. Licensed & insured. Call (555) 123-4567.',
   keywords: 'pest control, exterminator, ant control, roach treatment, rodent control, termite inspection',
   openGraph: {
-    title: 'NoPests | Professional Pest Control',
+    title: 'PestMaster | Professional Pest Control',
     description: 'Professional pest control with free inspections and same-day service. Licensed & insured.',
     url: 'https://nopests.com',
-    siteName: 'NoPests',
+    siteName: 'PestMaster',
     locale: 'en_US',
     type: 'website',
   },

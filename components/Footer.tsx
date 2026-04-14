@@ -18,7 +18,7 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <span className="font-extrabold text-xl">NoPests</span>
+                <span className="font-extrabold text-xl">PestMaster</span>
                 <span className="block text-xs text-brand-400 font-medium tracking-wide uppercase">Pest Control</span>
               </div>
             </Link>
@@ -101,7 +101,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-brand-400 text-sm">
-              &copy; {new Date().getFullYear()} NoPests. All rights reserved.
+              &copy; {new Date().getFullYear()} PestMaster. All rights reserved.
             </p>
             <div className="flex gap-6 text-brand-400 text-sm">
               <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>

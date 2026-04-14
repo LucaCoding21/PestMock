@@ -10,7 +10,7 @@ interface Message {
 }
 
 const MOCK_RESPONSES: Record<string, string> = {
-  default: "Hi! I'm the NoPests AI assistant. I can help you with pest identification, treatment options, scheduling, and pricing questions. How can I help you today?",
+  default: "Hi! I'm the PestMaster AI assistant. I can help you with pest identification, treatment options, scheduling, and pricing questions. How can I help you today?",
   ant: "Ant infestations are one of our most common calls! We use a combination of baiting systems and perimeter treatments that eliminate the colony at its source. Our Monthly Plan (starting at $79/mo) covers ant treatment. Would you like me to schedule a free inspection?",
   roach: "Cockroaches require aggressive treatment since they reproduce quickly. We use gel baits, IGR (insect growth regulators), and targeted sprays. Most infestations are resolved within 2-3 treatments. Our quarterly plans include unlimited roach treatments with a 30-day guarantee.",
   termite: "Termite damage can be devastating - they cause over $5 billion in damage annually! We offer free termite inspections using thermal imaging. Treatment options include liquid barriers and bait stations. I'd strongly recommend scheduling an inspection ASAP.",
@@ -137,7 +137,7 @@ export default function ChatBot() {
             </svg>
           </div>
           <div className="flex-1">
-            <h3 className="font-bold text-lg">NoPests AI Assistant</h3>
+            <h3 className="font-bold text-lg">PestMaster AI Assistant</h3>
             <p className="text-sm text-white/80 flex items-center gap-1.5">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               Online - Typically replies instantly
@@ -233,7 +233,7 @@ export default function ChatBot() {
             </button>
           </div>
           <p className="text-xs text-muted text-center mt-2">
-            Powered by NoPests AI
+            Powered by PestMaster AI
           </p>
         </div>
       </div>
