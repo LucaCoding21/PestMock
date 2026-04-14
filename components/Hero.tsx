@@ -425,7 +425,7 @@ export default function Hero() {
           <div className="flex-1 max-w-2xl text-center lg:text-left">
             {/* Main headline */}
             <h1 className="mt-16 sm:mt-0 text-5xl sm:text-4xl lg:text-6xl font-bold text-white tracking-tight">
-              baka pest 123
+              baka pest 124
             </h1>
 
             {/* Subheadline */}
